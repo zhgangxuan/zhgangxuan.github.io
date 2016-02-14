@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>double test</title>
+</head>
+<body>
+	Testing
+
+</body>
+<script>
+
+	var p1 = Math.PI + 0.001;
+	var p2 = Math.PI - 0.001;
+
+	function TestOnce() {
+		var v=Math.PI;
+		for (var i = 0; i < 1000; i++) {
+			v = v * p1;
+			v = v / p2;
+		}
+		return v;
+	}
+
+	var sv;
+
+	function Main() {
+		var dt1 = new Date().getTime();
+
+		for (var i = 0; i < 1000000; i++) {
+			sv = TestOnce();
+		}
+
+		var dt2 = new Date().getTime();
+
+		document.body.innerHTML = sv +"<br/>"+Math.floor(dt2-dt1)+ "<br/>" + navigator.userAgent;
+	}
+
+	setTimeout(Main, 1);
+
+</script>
+</html>
